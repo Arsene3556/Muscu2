@@ -1,0 +1,313 @@
+// 15 séances d'une heure, chaque séance cible un muscle ou groupe musculaire
+document.seances = [
+  {
+    nom: "Pectoraux",
+    exercices: [
+      { nom: "Développé couché haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Développé incliné haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Développé décliné haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Écarté couché haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Écarté incliné haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Pompes", type: "timer", duree: 60, series: 3 },
+      { nom: "Pompes surélevées", type: "timer", duree: 45, series: 3 },
+      { nom: "Pull-over haltère", type: "reps", reps: 12, series: 3 },
+      { nom: "Pec fly barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Dips entre deux chaises", type: "timer", duree: 30, series: 3 }
+    ]
+  },
+  {
+    nom: "Dos",
+    exercices: [
+      { nom: "Rowing haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Rowing un bras haltère", type: "reps", reps: 12, series: 4 },
+      { nom: "Pull-over barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Tirage menton haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Tirage horizontal haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Superman", type: "timer", duree: 60, series: 3 },
+      { nom: "Good morning barre", type: "reps", reps: 15, series: 3 },
+      { nom: "Reverse fly haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Deadlift jambes tendues", type: "reps", reps: 12, series: 3 },
+      { nom: "Tractions australiennes", type: "timer", duree: 45, series: 3 }
+    ]
+  },
+  {
+    nom: "Jambes",
+    exercices: [
+      { nom: "Squat haltères", type: "reps", reps: 15, series: 4 },
+      { nom: "Squat sumo haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Fentes haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Fentes bulgares", type: "reps", reps: 12, series: 3 },
+      { nom: "Soulevé de terre jambes tendues", type: "reps", reps: 12, series: 3 },
+      { nom: "Soulevé de terre sumo", type: "reps", reps: 12, series: 3 },
+      { nom: "Mollets debout", type: "timer", duree: 60, series: 3 },
+      { nom: "Mollets assis haltères", type: "reps", reps: 20, series: 3 },
+      { nom: "Sauts sur place", type: "timer", duree: 45, series: 3 },
+      { nom: "Hip thrust haltère", type: "reps", reps: 15, series: 3 }
+    ]
+  },
+  {
+    nom: "Épaules",
+    exercices: [
+      { nom: "Développé épaules haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Développé militaire barre", type: "reps", reps: 12, series: 4 },
+      { nom: "Élévations latérales", type: "reps", reps: 15, series: 3 },
+      { nom: "Élévations frontales", type: "reps", reps: 15, series: 3 },
+      { nom: "Oiseau haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Pompes mains serrées", type: "timer", duree: 45, series: 3 },
+      { nom: "Tirage menton haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Arnold press", type: "reps", reps: 12, series: 3 },
+      { nom: "Shrugs haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Rotation externe haltères", type: "reps", reps: 15, series: 2 }
+    ]
+  },
+  {
+    nom: "Biceps",
+    exercices: [
+      { nom: "Curl haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Curl marteau", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl incliné haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl concentration", type: "reps", reps: 10, series: 3 },
+      { nom: "Curl alterné haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl prise marteau barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Tractions supination (si possible)", type: "timer", duree: 30, series: 3 },
+      { nom: "Curl isométrique haltères", type: "timer", duree: 30, series: 2 },
+      { nom: "Curl inversé haltères", type: "reps", reps: 12, series: 3 }
+    ]
+  },
+  {
+    nom: "Triceps",
+    exercices: [
+      { nom: "Extension nuque haltère", type: "reps", reps: 12, series: 4 },
+      { nom: "Kickback haltère", type: "reps", reps: 12, series: 3 },
+      { nom: "Barre front", type: "reps", reps: 12, series: 3 },
+      { nom: "Pompes prise serrée", type: "timer", duree: 45, series: 3 },
+      { nom: "Extension triceps barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Dips entre deux chaises", type: "timer", duree: 30, series: 3 },
+      { nom: "Pompes diamant", type: "timer", duree: 30, series: 3 },
+      { nom: "Extension triceps un bras haltère", type: "reps", reps: 12, series: 3 },
+      { nom: "Triceps isométrique", type: "timer", duree: 30, series: 2 },
+      { nom: "Pompes triceps sur banc", type: "timer", duree: 30, series: 2 }
+    ]
+  },
+  {
+    nom: "Abdos",
+    exercices: [
+      { nom: "Crunch haltère", type: "reps", reps: 20, series: 4 },
+      { nom: "Relevé de jambes", type: "reps", reps: 15, series: 3 },
+      { nom: "Gainage", type: "timer", duree: 60, series: 3 },
+      { nom: "Russian twist haltère", type: "reps", reps: 20, series: 3 },
+      { nom: "Crunch oblique", type: "reps", reps: 20, series: 3 },
+      { nom: "Planche latérale", type: "timer", duree: 45, series: 3 },
+      { nom: "Mountain climbers", type: "timer", duree: 45, series: 3 },
+      { nom: "Sit-up haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Gainage bras tendus", type: "timer", duree: 45, series: 2 },
+      { nom: "Relevé de buste", type: "reps", reps: 20, series: 3 }
+    ]
+  },
+  {
+    nom: "Avant-bras",
+    exercices: [
+      { nom: "Curl inversé haltères", type: "reps", reps: 15, series: 4 },
+      { nom: "Extension poignets haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Farmer walk", type: "timer", duree: 60, series: 3 },
+      { nom: "Poignets en pronation haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Poignets en supination haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Reverse curl barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Serrage de main haltère", type: "timer", duree: 30, series: 3 },
+      { nom: "Rotation poignée haltère", type: "reps", reps: 15, series: 3 },
+      { nom: "Flexion poignet barre", type: "reps", reps: 15, series: 3 },
+      { nom: "Farmer walk sur la pointe", type: "timer", duree: 45, series: 2 }
+    ]
+  },
+  {
+    nom: "Fessiers",
+    exercices: [
+      { nom: "Hip thrust haltère", type: "reps", reps: 15, series: 4 },
+      { nom: "Abduction jambe", type: "reps", reps: 20, series: 3 },
+      { nom: "Pont fessier", type: "timer", duree: 60, series: 3 },
+      { nom: "Fentes arrière", type: "reps", reps: 15, series: 3 },
+      { nom: "Squat sumo haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Soulevé de terre jambes tendues", type: "reps", reps: 12, series: 3 },
+      { nom: "Fire hydrant", type: "reps", reps: 15, series: 3 },
+      { nom: "Donkey kicks", type: "reps", reps: 15, series: 3 },
+      { nom: "Abduction allongé", type: "reps", reps: 20, series: 2 },
+      { nom: "Step-up sur banc", type: "reps", reps: 15, series: 2 }
+    ]
+  },
+  {
+    nom: "Mollets",
+    exercices: [
+      { nom: "Mollets debout haltères", type: "reps", reps: 20, series: 4 },
+      { nom: "Mollets assis haltères", type: "reps", reps: 20, series: 3 },
+      { nom: "Sauts sur place", type: "timer", duree: 45, series: 3 },
+      { nom: "Farmer walk sur la pointe", type: "timer", duree: 45, series: 2 },
+      { nom: "Mollets unilatéral", type: "reps", reps: 15, series: 3 },
+      { nom: "Montée sur banc", type: "reps", reps: 15, series: 3 },
+      { nom: "Jump squats", type: "timer", duree: 30, series: 3 },
+      { nom: "Mollets debout un pied", type: "reps", reps: 12, series: 3 },
+      { nom: "Step-up sur banc", type: "reps", reps: 15, series: 2 },
+      { nom: "Mollets assis barre", type: "reps", reps: 15, series: 2 }
+    ]
+  },
+  {
+    nom: "Cardio (full body)",
+    exercices: [
+      { nom: "Burpees", type: "timer", duree: 45, series: 4 },
+      { nom: "Mountain climbers", type: "timer", duree: 45, series: 3 },
+      { nom: "Jumping jacks", type: "timer", duree: 45, series: 3 },
+      { nom: "Squat sauté", type: "timer", duree: 30, series: 3 },
+      { nom: "High knees", type: "timer", duree: 30, series: 3 },
+      { nom: "Fentes sautées", type: "timer", duree: 30, series: 3 },
+      { nom: "Pompes", type: "timer", duree: 30, series: 3 },
+      { nom: "Planche dynamique", type: "timer", duree: 30, series: 3 },
+      { nom: "Gainage", type: "timer", duree: 45, series: 3 },
+      { nom: "Boxer shuffle", type: "timer", duree: 30, series: 2 }
+    ]
+  },
+  {
+    nom: "Full body débutant",
+    exercices: [
+      { nom: "Squat haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Développé couché haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Pompes", type: "timer", duree: 30, series: 2 },
+      { nom: "Fentes haltères", type: "reps", reps: 12, series: 2 },
+      { nom: "Gainage", type: "timer", duree: 30, series: 2 },
+      { nom: "Rowing haltères", type: "reps", reps: 12, series: 2 },
+      { nom: "Mollets debout", type: "timer", duree: 30, series: 2 },
+      { nom: "Crunch haltère", type: "reps", reps: 15, series: 2 },
+      { nom: "Planche latérale", type: "timer", duree: 20, series: 2 }
+    ]
+  },
+  {
+    nom: "Full body avancé",
+    exercices: [
+      { nom: "Soulevé de terre jambes tendues", type: "reps", reps: 15, series: 4 },
+      { nom: "Développé épaules haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Gainage", type: "timer", duree: 60, series: 3 },
+      { nom: "Burpees", type: "timer", duree: 45, series: 3 },
+      { nom: "Squat haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Pompes", type: "timer", duree: 45, series: 3 },
+      { nom: "Fentes bulgares", type: "reps", reps: 12, series: 3 },
+      { nom: "Développé couché haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Crunch haltère", type: "reps", reps: 15, series: 2 }
+    ]
+  },
+  {
+    nom: "Bras (biceps/triceps)",
+    exercices: [
+      { nom: "Curl barre", type: "reps", reps: 12, series: 4 },
+      { nom: "Barre front", type: "reps", reps: 12, series: 4 },
+      { nom: "Pompes prise serrée", type: "timer", duree: 45, series: 3 },
+      { nom: "Curl haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Kickback haltère", type: "reps", reps: 12, series: 3 },
+      { nom: "Extension nuque haltère", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl marteau", type: "reps", reps: 12, series: 3 },
+      { nom: "Extension triceps barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Dips entre deux chaises", type: "timer", duree: 30, series: 3 },
+      { nom: "Pompes diamant", type: "timer", duree: 30, series: 2 }
+    ]
+  },
+  {
+    nom: "Dos/épaules",
+    exercices: [
+      { nom: "Rowing haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Tirage menton haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Oiseau haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Superman", type: "timer", duree: 60, series: 3 },
+      { nom: "Développé épaules haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Développé militaire barre", type: "reps", reps: 12, series: 3 },
+      { nom: "Shrugs haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Reverse fly haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Arnold press", type: "reps", reps: 12, series: 3 },
+      { nom: "Rotation externe haltères", type: "reps", reps: 15, series: 2 }
+    ]
+  },
+  {
+    nom: "Triceps",
+    exercices: [
+      { nom: "Extension nuque haltère", type: "reps", reps: 12, series: 4 },
+      { nom: "Kickback haltère", type: "reps", reps: 12, series: 3 },
+      { nom: "Barre front", type: "reps", reps: 12, series: 3 },
+      { nom: "Pompes prise serrée", type: "timer", duree: 45, series: 3 }
+    ]
+  },
+  {
+    nom: "Abdos",
+    exercices: [
+      { nom: "Crunch haltère", type: "reps", reps: 20, series: 4 },
+      { nom: "Relevé de jambes", type: "reps", reps: 15, series: 3 },
+      { nom: "Gainage", type: "timer", duree: 60, series: 3 },
+      { nom: "Russian twist haltère", type: "reps", reps: 20, series: 3 }
+    ]
+  },
+  {
+    nom: "Avant-bras",
+    exercices: [
+      { nom: "Curl inversé haltères", type: "reps", reps: 15, series: 4 },
+      { nom: "Extension poignets haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Farmer walk", type: "timer", duree: 60, series: 3 }
+    ]
+  },
+  {
+    nom: "Fessiers",
+    exercices: [
+      { nom: "Hip thrust haltère", type: "reps", reps: 15, series: 4 },
+      { nom: "Abduction jambe", type: "reps", reps: 20, series: 3 },
+      { nom: "Pont fessier", type: "timer", duree: 60, series: 3 }
+    ]
+  },
+  {
+    nom: "Mollets",
+    exercices: [
+      { nom: "Mollets debout haltères", type: "reps", reps: 20, series: 4 },
+      { nom: "Mollets assis haltères", type: "reps", reps: 20, series: 3 },
+      { nom: "Sauts sur place", type: "timer", duree: 45, series: 3 }
+    ]
+  },
+  {
+    nom: "Cardio (full body)",
+    exercices: [
+      { nom: "Burpees", type: "timer", duree: 45, series: 4 },
+      { nom: "Mountain climbers", type: "timer", duree: 45, series: 3 },
+      { nom: "Jumping jacks", type: "timer", duree: 45, series: 3 }
+    ]
+  },
+  {
+    nom: "Full body débutant",
+    exercices: [
+      { nom: "Squat haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Développé couché haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Curl haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Pompes", type: "timer", duree: 30, series: 2 }
+    ]
+  },
+  {
+    nom: "Full body avancé",
+    exercices: [
+      { nom: "Soulevé de terre jambes tendues", type: "reps", reps: 15, series: 4 },
+      { nom: "Développé épaules haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Gainage", type: "timer", duree: 60, series: 3 },
+      { nom: "Burpees", type: "timer", duree: 45, series: 3 }
+    ]
+  },
+  {
+    nom: "Bras (biceps/triceps)",
+    exercices: [
+      { nom: "Curl barre", type: "reps", reps: 12, series: 4 },
+      { nom: "Barre front", type: "reps", reps: 12, series: 4 },
+      { nom: "Pompes prise serrée", type: "timer", duree: 45, series: 3 }
+    ]
+  },
+  {
+    nom: "Dos/épaules",
+    exercices: [
+      { nom: "Rowing haltères", type: "reps", reps: 12, series: 4 },
+      { nom: "Tirage menton haltères", type: "reps", reps: 12, series: 3 },
+      { nom: "Oiseau haltères", type: "reps", reps: 15, series: 3 },
+      { nom: "Superman", type: "timer", duree: 60, series: 3 }
+    ]
+  }
+];
